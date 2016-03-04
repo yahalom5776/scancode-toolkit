@@ -102,7 +102,7 @@ def get_urls(location):
 
 DEJACODE_LICENSE_URL = 'https://enterprise.dejacode.com/urn/urn:dje:license:{}'
 
-def get_licenses(location, min_score=0):
+def get_licenses(location, min_score=0, config_location=None):
     """
     Yield an iterable of dictionaries of license data detected in the file at
     location for each detected license.
@@ -114,6 +114,10 @@ def get_licenses(location, min_score=0):
     """
     from licensedcode.index import get_index
     from licensedcode.models import get_licenses as licenses_getter
+    from scancode.config import load_conf
+
+    config = load_conf(config_location)
+    policies = config.get('license_policies', {})
 
     idx = get_index()
     licenses = licenses_getter()
@@ -136,13 +140,14 @@ def get_licenses(location, min_score=0):
             result['spdx_url'] = lic.spdx_url
             result['start_line'] = lines_start
             result['end_line'] = lines_end
+            #214: Added the ability to return a license policy based on a configuration a .scancode.yml config file
+            result['policy'] = policies.get(license_key, '')
             result['matched_rule'] = OrderedDict()
             result['matched_rule']['identifier'] = match.rule.identifier
             result['matched_rule']['license_choice'] = match.rule.license_choice
             result['matched_rule']['licenses'] = match.rule.licenses
             # TODO: add debug details such as matcher
             # result['matched_rule']['matcher'] = match.matcher
-
             yield result
 
 

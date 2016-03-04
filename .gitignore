@@ -57,4 +57,11 @@ docs/_build
 
 /local/
 /share/
+<<<<<<< Upstream, based on upstream/develop
 /tcl/
+=======
+/local/
+
+>>>>>>> a0eff46 #214: Added the ability to return a license policy based on a configuration a .scancode.yml config file
+# scancode conf
+.scancode.yml

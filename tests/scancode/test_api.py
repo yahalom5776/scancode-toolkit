@@ -24,10 +24,10 @@
 
 from __future__ import absolute_import, print_function
 
+from collections import OrderedDict
 import os
 
 from commoncode.testcase import FileBasedTesting
-
 from scancode import api
 
 
@@ -47,3 +47,28 @@ class TestAPI(FileBasedTesting):
         except:
             _pickled = pickle.dumps(package)
             _cpickled = cPickle.dumps(package)
+
+    def test_get_license_with_policy_configuration(self):
+        config = self.get_test_loc('api/scancode.yml')
+        test_file = self.get_test_loc('api/LICENSE.txt')
+        result = api.get_licenses(location=test_file, config_location=config)
+        expected = [OrderedDict([
+            ('key', u'bsd-new'),
+            ('score', 99.06),
+            ('short_name', u'BSD-Modified'),
+            ('category', u'Attribution'),
+            ('owner', u'Regents of the University of California'),
+            ('homepage_url', u'http://www.opensource.org/licenses/BSD-3-Clause'),
+            ('text_url', ''),
+            ('dejacode_url', 'https://enterprise.dejacode.com/urn/urn:dje:license:bsd-new'),
+            ('spdx_license_key', u'BSD-3-Clause'),
+            ('spdx_url', u'http://spdx.org/licenses/BSD-3-Clause'),
+            ('start_line', 4), ('end_line', 12),
+            ('policy', u'Restricted License'),
+            ('matched_rule', OrderedDict([
+                ('identifier', u'bsd-new.LICENSE'),
+                ('license_choice', False),
+                ('licenses', ['bsd-new'])
+            ]))
+        ])]
+        assert expected == list(result)

@@ -204,6 +204,7 @@
           "short_name": "BSD-Original-UC", 
           "category": "Attribution", 
           "owner": "Regents of the University of California", 
+          "policy": "", 
           "homepage_url": "ftp://ftp.cs.berkeley.edu/pub/4bsd/README.Impt.License.Change", 
           "text_url": "http://www.xfree86.org/3.3.6/COPYRIGHT2.html", 
           "dejacode_url": "https://enterprise.dejacode.com/urn/urn:dje:license:bsd-original-uc", 
@@ -283,6 +284,7 @@
           "short_name": "GPL 2.0", 
           "category": "Copyleft", 
           "owner": "Free Software Foundation (FSF)", 
+          "policy": "", 
           "homepage_url": "http://www.gnu.org/licenses/gpl-2.0.html", 
           "text_url": "http://www.gnu.org/licenses/gpl-2.0.txt", 
           "dejacode_url": "https://enterprise.dejacode.com/urn/urn:dje:license:gpl-2.0", 
@@ -305,6 +307,8 @@
           "short_name": "BSD-Modified", 
           "category": "Attribution", 
           "owner": "Regents of the University of California", 
+          "policy": "", 
+<<<<<<< Upstream, based on upstream/develop
           "homepage_url": "http://www.opensource.org/licenses/BSD-3-Clause", 
           "text_url": "", 
           "dejacode_url": "https://enterprise.dejacode.com/urn/urn:dje:license:bsd-new", 
@@ -320,6 +324,15 @@
               "bsd-new"
             ]
           }
+=======
+          "homepage_url": "ftp://ftp.cs.berkeley.edu/pub/4bsd/README.Impt.License.Change", 
+          "text_url": "http://www.xfree86.org/3.3.6/COPYRIGHT2.html", 
+          "dejacode_url": "https://enterprise.dejacode.com/license_library/Demo/bsd-original-uc/", 
+          "spdx_license_key": "BSD-4-Clause-UC", 
+          "spdx_url": "http://spdx.org/licenses/BSD-4-Clause-UC", 
+          "start_line": 22, 
+          "end_line": 51
+>>>>>>> a0eff46 #214: Added the ability to return a license policy based on a configuration a .scancode.yml config file
         }
       ], 
       "copyrights": [
@@ -333,6 +346,62 @@
           "authors": [], 
           "start_line": 2, 
           "end_line": 3
+<<<<<<< Upstream, based on upstream/develop
+=======
+        }
+      ], 
+      "licenses": [
+        {
+          "key": "gpl-2.0", 
+          "score": 100.0, 
+          "short_name": "GPL 2.0", 
+          "category": "Copyleft", 
+          "owner": "Free Software Foundation (FSF)", 
+          "policy": "", 
+          "homepage_url": "http://www.gnu.org/licenses/gpl-2.0.html", 
+          "text_url": "http://www.gnu.org/licenses/gpl-2.0.txt", 
+          "dejacode_url": "https://enterprise.dejacode.com/license_library/Demo/gpl-2.0/", 
+          "spdx_license_key": "GPL-2.0", 
+          "spdx_url": "http://spdx.org/licenses/GPL-2.0", 
+          "start_line": 5, 
+          "end_line": 10
+        }, 
+        {
+          "key": "bsd-new", 
+          "score": 100.0, 
+          "short_name": "BSD-Modified", 
+          "category": "Attribution", 
+          "owner": "Regents of the University of California", 
+          "policy": "", 
+          "homepage_url": "http://www.opensource.org/licenses/BSD-3-Clause", 
+          "text_url": "", 
+          "dejacode_url": "https://enterprise.dejacode.com/license_library/Demo/bsd-new/", 
+          "spdx_license_key": "BSD-3-Clause", 
+          "spdx_url": "http://spdx.org/licenses/BSD-3-Clause", 
+          "start_line": 5, 
+          "end_line": 10
+        }
+      ], 
+      "infos": [
+        {
+          "type": "file", 
+          "name": "main.c", 
+          "extension": ".c", 
+          "date": "2015-06-19", 
+          "size": 1940, 
+          "sha1": "35017ed9762bdc9d16054a40ceefdda8b362083a", 
+          "md5": "8d0a3b3fe1c96a49af2a66040193291b", 
+          "files_count": null, 
+          "mime_type": "text/x-c", 
+          "file_type": "C source, ASCII text", 
+          "programming_language": "C", 
+          "is_binary": null, 
+          "is_text": true, 
+          "is_archive": null, 
+          "is_media": null, 
+          "is_source": true, 
+          "is_script": null
+>>>>>>> a0eff46 #214: Added the ability to return a license policy based on a configuration a .scancode.yml config file
         }
       ]
     }
