@@ -81,12 +81,13 @@ Try 'extractcode --help' for help on options and arguments.'''
 
 @click.option('--verbose', is_flag=True, default=False, help='Print verbose file-by-file progress messages.')
 @click.option('--quiet', is_flag=True, default=False, help='Do not print any progress message.')
+@click.option('--shallow', is_flag=True, default=False)
 
 @click.help_option('-h', '--help')
 @click.option('--about', is_flag=True, is_eager=True, callback=print_about, help='Show information about ScanCode and licensing and exit.')
 @click.option('--version', is_flag=True, is_eager=True, callback=print_version, help='Show the version and exit.')
 
-def extractcode(ctx, input, verbose, quiet, *args, **kwargs):  # @ReservedAssignment
+def extractcode(ctx, input, verbose, quiet, shallow, *args, **kwargs):  # @ReservedAssignment
     """extract archives and compressed files found in the <input> file or directory tree.
 
     Use this command before scanning proper, as an <input> preparation step.
@@ -148,7 +149,7 @@ def extractcode(ctx, input, verbose, quiet, *args, **kwargs):  # @ReservedAssign
     extract_results = []
     has_extract_errors = False
 
-    with utils.progressmanager(extract_archives(abs_input),
+    with utils.progressmanager(extract_archives(abs_input, not shallow),
                                item_show_func=extract_event,
                                start_show_func=extract_start,
                                finish_show_func=extract_end,
