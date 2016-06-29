@@ -45,6 +45,21 @@ the actual command outputs as if using a TTY or not.
 """
 
 
+def test_extractcode_command_does_extract_shallow(monkeypatch):
+    test_dir = test_env.get_test_loc('extract_shallow', copy=True)
+    monkeypatch.setattr(click._termui_impl, 'isatty', lambda _: True)
+    runner = CliRunner()
+    result = runner.invoke(extract_cli.extractcode, ['--shallow', test_dir])
+    assert result.exit_code == 0
+    assert os.path.exists(os.path.join(test_dir, 'top.zip-extract'))
+    assert os.path.exists(os.path.join(test_dir, 'top.zip-extract/some1.zip'))
+    assert os.path.exists(os.path.join(test_dir, 'top.zip-extract/some2.zip'))
+    assert os.path.exists(os.path.join(test_dir, 'top.zip-extract/some3.zip'))
+    assert os.path.exists(os.path.join(test_dir, 'top.zip-extract/some1.zip--extract')) is False
+    assert os.path.exists(os.path.join(test_dir, 'top.zip-extract/some2.zip--extract')) is False
+    assert os.path.exists(os.path.join(test_dir, 'top.zip-extract/some3.zip--extract')) is False
+
+
 def test_extractcode_command_can_take_an_empty_directory(monkeypatch):
     test_dir = test_env.get_temp_dir()
     monkeypatch.setattr(click._termui_impl, 'isatty', lambda _: True)
