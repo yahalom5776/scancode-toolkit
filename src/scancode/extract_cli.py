@@ -81,7 +81,7 @@ Try 'extractcode --help' for help on options and arguments.'''
 
 @click.option('--verbose', is_flag=True, default=False, help='Print verbose file-by-file progress messages.')
 @click.option('--quiet', is_flag=True, default=False, help='Do not print any progress message.')
-@click.option('--shallow', is_flag=True, default=False)
+@click.option('--shallow', is_flag=True, default=False, help='Extract top level archives only.')
 
 @click.help_option('-h', '--help')
 @click.option('--about', is_flag=True, is_eager=True, callback=print_about, help='Show information about ScanCode and licensing and exit.')
