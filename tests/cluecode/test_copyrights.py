@@ -3971,3 +3971,8 @@ class TestCopyrightDetection(FileBasedTesting):
         test_file = self.get_test_loc('copyrights/bv.txt')
         expected = [u'Copyright (c) 2016 HERE Europe B.V.', u'(c) HERE 2016']
         check_detection(expected, test_file)
+
+    def test_copyright_should_not_be_detected_in_junk_strings_with_year_prefix(self):
+        test_file = self.get_test_loc('copyrights/access_strings.txt')
+        expected = []
+        check_detection(expected, test_file)
